@@ -1,4 +1,3 @@
-import cors from 'cors'
 import express from 'express'
 import router from './routes/index.routes.js'
 import passport from 'passport'
@@ -8,22 +7,9 @@ import MongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
 import initializePassport from './config/passport.js'
 
-const whiteList = ['http://127.0.0.1:5173']
-
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (whiteList.indexOf(origin) != -1 || !origin) { //Existe dentro de whitelist
-            callback(null, true)
-        } else {
-            callback(new Error("Acceso denegado"))
-        }
-    }
-}
-
 const app = express()
 const PORT = 3000
 
-app.use(cors(corsOptions))
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log("DB conectada")
