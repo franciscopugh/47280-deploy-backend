@@ -1,4 +1,3 @@
-import 'dotenv/config' //Permite utilizar variables de entorno
 import cors from 'cors'
 import express from 'express'
 import router from './routes/index.routes.js'
