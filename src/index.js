@@ -38,7 +38,9 @@ app.use(passport.session())
 
 //Routes
 app.use('/', router)
-
+app.get('/', (req, res) => {
+    res.send("Hola desde deploy")
+})
 //Server
 app.listen(PORT, () => {
     console.log(`Server on port ${PORT}`)
